@@ -1,60 +1,53 @@
 var vowels = ["a", "A", "e", "E", "i", "I", "o", "O", "u", "U"];
 var integers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-var firstLetter = function(splitWords) {
-  var first = splitWords[0];
-  for(var i = 0; i < vowels.length; i += 1){
-    if (vowels[i] === first) {
-      return true;
-    }
-  }
-}
-
-
-var test = firstLetter(["b", "a", "b"]);
-console.log(test);
-
 var pigLatin = function(word) {
-
   var splitWords = word.toString().split("");
   var number = false;
-
   splitWords.forEach(function(element) {
     var intquery = integers.indexOf(element);
     if (intquery != -1) {
       number = true;
     }
   });
-
   if (number) {
-    return word + " is not a word";
+    return false;
+  } else {
+    return startsWithQU(word);
   }
-
-  return word + "ay";
 }
 
-  //
-  // var vowel = false;
-
-
-  //
-  // for(var i = 0; i < 1; i++) {
-  //   var vowquery = vowels.indexOf(i=0);
-  //   if (vowquery != -1) {
-  //     vowel = true;
-  //   }
-  // })
-
-var consonantMove = function(splitWords) {
-  splitWords.push(splitWords[0]);
-  splitWords.splice(0,1)
-  var newWord = splitWords.join("");
-  return newWord;
+var startsWithVowel = function(word) {
+  if (vowels.indexOf(word[0]) != -1) {
+    return word + "ay";
+  } else {
+    return false;
+  }
 }
 
-//   if(vowel)
-// };
-//
+var startsWithCon = function(word) {
+  if (vowels.indexOf(word[0]) === -1) {
+    return word.slice(1, (word.length)) + word.slice(0,1) + "ay";
+  } else {
+    return startsWithVowel(word);
+  }
+}
+
+var startsWithDoubCon = function(word) {
+  if ((vowels.indexOf(word[0]) === -1) && (vowels.indexOf(word[1]) === -1))  {
+    return word.slice(2, (word.length)) + word.slice(0,2) + "ay";
+  } else {
+    return startsWithCon(word);
+  }
+}
+
+var startsWithQU = function(word) {
+  if (word[0,1] === "q", "u") {
+    return word.slice(2, (word.length)) + word.slice(0,2) + "ay";
+  } else {
+    return startsWithDoubCon(word);
+  }
+}
 
 //User Interface
 $(document).ready(function(){
