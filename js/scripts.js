@@ -42,12 +42,14 @@ var startsWithDoubCon = function(word) {
 }
 
 var startsWithQU = function(word) {
-  if (word[0,1] === "q", "u") {
+  if (word.slice(0,2) === "qu") {
     return word.slice(2, (word.length)) + word.slice(0,2) + "ay";
   } else {
     return startsWithDoubCon(word);
   }
 }
+
+
 
 //User Interface
 $(document).ready(function(){
