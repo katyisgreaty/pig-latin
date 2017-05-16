@@ -1,7 +1,7 @@
 # Pig Latin
 
-####_A website to tell you if an entered year is a leap year, 01.18.17_
-#### By Tammy Dang and Katy Daviscourt
+
+#### By Tammy Dang and Katy Daviscourt, 01.18.17
 ## Description
 (USE NEW APPROACH BRANCH!!) use branching in javascript with Behavior Based Design to translate english to pig latin.
 
